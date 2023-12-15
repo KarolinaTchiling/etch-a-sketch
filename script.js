@@ -1,26 +1,61 @@
 
-const container = document.querySelector(".container");
+const board = document.querySelector(".board");
 
-let size = 10;
-let pixelSize = 800/size;
-pixelSize = pixelSize.toString();
-pixelSize = pixelSize + 'px';
-console.log(pixelSize);
+function createBoard(size) {
 
-for (let i = 0; i < size*size; i++){
-    const pixel = document.createElement('div');
-    pixel.classList.add('pixel');
+    let pixelSize = 600/size;
+    pixelSize = pixelSize.toString();
+    pixelSize = pixelSize + 'px';
 
+    for (let i = 0; i < size*size; i++){
+        const pixel = document.createElement('div');
+        pixel.classList.add('pixel');
+    
+        pixel.style.height = pixelSize;
+        pixel.style.width = pixelSize;
+        board.appendChild(pixel);
+    
+    }
 
-    pixel.style.height = pixelSize;
-    pixel.style.width = pixelSize;
-    container.appendChild(pixel);
-
-    pixel.addEventListener('mouseout', function() {
-        pixel.style.backgroundColor = "black";
-
-    });
 }
+
+let isMouseDown = false;
+board.addEventListener("mousedown", function (event) {
+    event.preventDefault();
+    isMouseDown = true;
+    draw(event);
+});
+
+board.addEventListener("mouseup", function () {
+    isMouseDown = false;
+});
+
+board.addEventListener("mousemove", function (event) {
+    if (isMouseDown) {
+        draw(event);
+    }
+});
+
+board.addEventListener("mouseleave", function () {
+    isMouseDown = false;
+});
+
+function draw(event) {
+    const clickedPixel = event.target;
+
+    if (clickedPixel.classList.contains('pixel')) {
+        clickedPixel.style.backgroundColor = "black";
+    }
+
+}
+
+
+createBoard(50);
+
+
+
+
+
 
 
 
