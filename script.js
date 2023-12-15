@@ -19,6 +19,54 @@ function createBoard(size) {
     }
 }
 
+function getRandomColor() {
+    // Generate random values for red, green, and blue (0-255)
+    const red = Math.floor(Math.random() * 256);
+    const green = Math.floor(Math.random() * 256);
+    const blue = Math.floor(Math.random() * 256);
+  
+    // Construct the CSS color string
+    const randomColor = `rgb(${red}, ${green}, ${blue})`;
+  
+    return randomColor;
+}
+  
+
+const clearBtn = document.getElementById("clear");
+clearBtn.addEventListener('click', function () {
+
+    let pixel = board.children;
+    
+    for(let i = 0; i < pixel.length; i++) {
+        pixel[i].style.backgroundColor = 'white';
+        pixel[i].style.opacity = "1"; 
+    }
+})
+
+let colorType = 'black';
+
+const rainbowBtn = document.getElementById("rainbow");
+rainbowBtn.addEventListener('click', function (){
+    colorType = 'rainbow';
+})
+
+const blackBtn = document.getElementById("black");
+blackBtn.addEventListener('click', function (){
+    colorType = 'black';
+})
+
+const eraserBtn = document.getElementById("eraser");
+eraserBtn.addEventListener('click', function (){
+    colorType = 'eraser';
+})
+
+const shaderBtn = document.getElementById("shader");
+shaderBtn.addEventListener('click', function (){
+    colorType = 'shader';
+})
+
+
+
 
 let isMouseDown = false;
 board.addEventListener("mousedown", function (event) {
@@ -41,14 +89,52 @@ board.addEventListener("mouseleave", function () {
     isMouseDown = false;
 });
 
+let prevPixel = null;
+
+
 function draw(event) {
     const clickedPixel = event.target;
 
     if (clickedPixel.classList.contains('pixel')) {
-        clickedPixel.style.backgroundColor = "black";
+
+        if (prevPixel !== clickedPixel) {
+
+            if (colorType == 'black') {
+                clickedPixel.style.backgroundColor = "black"; 
+                clickedPixel.style.opacity = "1"; 
+            }
+            else if (colorType == 'rainbow') {
+                clickedPixel.style.backgroundColor = getRandomColor();
+                clickedPixel.style.opacity = "1";  
+            }
+            else if (colorType == 'eraser') {
+                clickedPixel.style.backgroundColor = "white";
+                clickedPixel.style.opacity = "1"; 
+            }
+            else if (colorType == 'shader') {
+                let currentColor = window.getComputedStyle(clickedPixel).backgroundColor;
+                let currentOpacity = window.getComputedStyle(clickedPixel).opacity;
+                console.log(currentColor);
+    
+                if (currentColor == "rgb(255, 255, 255)"){
+                    clickedPixel.style.backgroundColor = "black"; 
+                    clickedPixel.style.opacity = "0.1"; 
+                }
+                if (currentOpacity < 1) {
+                    console.log(currentOpacity);
+        
+                    newOp = parseFloat(currentOpacity) + 0.1;
+                    console.log(newOp);
+                    clickedPixel.style.opacity = newOp;
+                }
+            }
+        }
+        prevPixel = clickedPixel;
+
     }
 
 }
+
 
 
 createBoard(4);
@@ -71,17 +157,10 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 });
 
-clearBtn = document.getElementById("clear");
-clearBtn.addEventListener('click', function () {
-
-    let pixel = board.children;
-    
-    for(let i = 0; i < pixel.length; i++) {
-        pixel[i].style.backgroundColor = 'white';
-    }
 
 
-})
+
+
 
 
 
