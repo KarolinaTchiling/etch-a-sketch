@@ -68,10 +68,22 @@ document.addEventListener('DOMContentLoaded', function () {
         board.innerHTML = '';
 
         createBoard(slider.value);
-
     });
-
 });
+
+clearBtn = document.getElementById("clear");
+clearBtn.addEventListener('click', function () {
+
+    let pixel = board.children;
+    
+    for(let i = 0; i < pixel.length; i++) {
+        pixel[i].style.backgroundColor = 'white';
+    }
+
+
+})
+
+
 
 
 
