@@ -1,5 +1,6 @@
 
 const board = document.querySelector(".board");
+const container = document.querySelector(".container");
 
 function createBoard(size) {
 
@@ -16,8 +17,8 @@ function createBoard(size) {
         board.appendChild(pixel);
     
     }
-
 }
+
 
 let isMouseDown = false;
 board.addEventListener("mousedown", function (event) {
@@ -50,7 +51,29 @@ function draw(event) {
 }
 
 
-createBoard(50);
+createBoard(4);
+
+
+document.addEventListener('DOMContentLoaded', function () {
+    // Get the slider and output elements
+    let slider = document.getElementById('mySlider');
+    let output = document.getElementById('sliderValue');
+  
+    // Display the default slider value
+    output.innerHTML = slider.value + " x " + slider.value;
+  
+    // Update the slider value when it changes
+    slider.addEventListener('input', function () {
+        output.innerHTML = this.value + " x " + this.value;
+        board.innerHTML = '';
+
+        createBoard(slider.value);
+
+    });
+
+});
+
+
 
 
 

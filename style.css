@@ -1,6 +1,31 @@
 
+h1 {
+    text-align: center;
+
+}
+
 .container {
-    width: 800px;
+    display: flex;
+    justify-content: center;
+}
+
+.slider-container {
+    text-align: center;
+}
+  
+input[type="range"] {
+width: 80%;
+margin-bottom: 10px;
+}
+
+p {
+font-size: 18px;
+font-weight: bold;
+}
+
+
+.board {
+    width: 600px;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -10,6 +35,3 @@
     box-shadow: inset 0 0 0 0.2px rgba(0, 0, 0, 0.404);
 }
 
-.pixel:hover {
-    background-color: black;
-}
