@@ -22,51 +22,70 @@ function createBoard(size) {
 }
 
 function getRandomColor() {
-    // Generate random values for red, green, and blue (0-255)
-    const red = Math.floor(Math.random() * 256);
-    const green = Math.floor(Math.random() * 256);
-    const blue = Math.floor(Math.random() * 256);
-  
-    // Construct the CSS color string
-    const randomColor = `rgb(${red}, ${green}, ${blue})`;
-  
-    return randomColor;
+
+    const ranNum = Math.floor(Math.random() * 7);
+
+    const result = ranNum === 0 ? "rgb(241, 55, 179)"
+        : ranNum === 1 ? "rgb(126, 66, 238)"
+        : ranNum === 2 ? "rgb(71, 157, 255)"
+        : ranNum === 3 ? "rgb(46, 252, 73)"
+        : ranNum === 4 ? "rgb(217, 255, 0)"
+        : ranNum === 5 ? "rgb(255, 123, 0)"
+        : "rgb(255, 30, 30)"
+
+    return result;
 }
   
 // Event Listeners for all the buttons
 let colorType = 'white';
 
 const whiteBtn = document.getElementById("white");
+whiteBtn.style.backgroundColor = "white";
 whiteBtn.addEventListener('click', function (){
     colorType = 'white';
 })
 const purpleBtn = document.getElementById("purple");
+purpleBtn.style.backgroundColor = "rgb(126, 66, 238)";
 purpleBtn.addEventListener('click', function (){
     colorType = 'purple';
 })
 const blueBtn = document.getElementById("blue");
+blueBtn.style.backgroundColor = "rgb(71, 157, 255)";
 blueBtn.addEventListener('click', function (){
     colorType = 'blue';
 })
 const greenBtn = document.getElementById("green");
+greenBtn.style.backgroundColor = "rgb(46, 252, 73)";
 greenBtn.addEventListener('click', function (){
     colorType = 'green';
 })
 const yellowBtn = document.getElementById("yellow");
+yellowBtn.style.backgroundColor = "rgb(217, 255, 0)";
 yellowBtn.addEventListener('click', function (){
     colorType = 'yellow';
 })
 const orangeBtn = document.getElementById("orange");
+orangeBtn.style.backgroundColor = "rgb(255, 123, 0)";
 orangeBtn.addEventListener('click', function (){
     colorType = 'orange';
 })
 const redBtn = document.getElementById("red");
+redBtn.style.backgroundColor = "rgb(255, 30, 30)";
 redBtn.addEventListener('click', function (){
     colorType = 'red';
 })
 const pinkBtn = document.getElementById("pink");
+pinkBtn.style.backgroundColor = "rgb(241, 55, 179)";
 pinkBtn.addEventListener('click', function (){
     colorType = 'pink';
+})
+const rainbowBtn = document.getElementById("rainbow");
+rainbowBtn.addEventListener('click', function (){
+    colorType = 'rainbow';
+})
+const removeBtn = document.getElementById("remove");
+removeBtn.addEventListener('click', function (){
+    colorType = 'black';
 })
 
 // Clears the board event
@@ -82,20 +101,7 @@ clearBtn.addEventListener('click', function () {
 })
 
 
-// const rainbowBtn = document.getElementById("rainbow");
-// rainbowBtn.addEventListener('click', function (){
-//     colorType = 'rainbow';
-// })
 
-// const blackBtn = document.getElementById("black");
-// blackBtn.addEventListener('click', function (){
-//     colorType = 'black';
-// })
-
-// const eraserBtn = document.getElementById("eraser");
-// eraserBtn.addEventListener('click', function (){
-//     colorType = 'eraser';
-// })
 
 // const shaderBtn = document.getElementById("shader");
 // shaderBtn.addEventListener('click', function (){
@@ -164,7 +170,15 @@ function draw(event) {
             else if (colorType == 'pink') {
                 clickedPixel.style.backgroundColor = "rgb(241, 55, 179)";
                 clickedPixel.style.opacity = "1";
-            }            
+            } 
+            else if (colorType == 'rainbow') {
+                clickedPixel.style.backgroundColor = getRandomColor();
+                clickedPixel.style.opacity = "1";  
+            } 
+            else if (colorType == 'black') {
+                clickedPixel.style.backgroundColor = "black";
+                clickedPixel.style.opacity = "1"; 
+            }          
         }
     }
     prevPixel = clickedPixel;
