@@ -1,7 +1,53 @@
 
+body {
+    background-image: url("background.jpg");
+    background-size: cover;
+}
+
 h1 {
     text-align: center;
+    color: rgb(217, 255, 0);
+    font-family: 'Silkscreen', sans-serif;
+    font-size: 46pt;
+}
 
+button {
+    margin: 10px;
+    /* border-radius: 50%; */
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+    background-color: #575757;
+    color: white
+}
+
+.colors {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+#clear {
+    margin-top: 30px;
+    width: 80px;
+    height: 80px;
+}
+
+#remove {
+    width: 80px;
+}
+
+#rainbow {
+    cursor: pointer;
+    background: linear-gradient(to right, violet, indigo, blue, green, yellow, orange, red);
+    font-weight: 600;
+    color: #fff;
+    text-shadow:
+        -1px -1px 0 #000,
+        1px -1px 0 #000,
+        -1px 1px 0 #000,
+        1px 1px 0 #000;
+    outline: none;
+    width: 80px;
 }
 
 .container {
@@ -11,27 +57,55 @@ h1 {
 
 .slider-container {
     text-align: center;
+    margin-bottom: 20px;
 }
   
 input[type="range"] {
 width: 80%;
-margin-bottom: 10px;
+margin-bottom: 5px;
+cursor: pointer;
 }
 
 p {
 font-size: 18px;
-font-weight: bold;
+color: white;
+margin-top: 0px;
+font-family: 'Silkscreen', sans-serif;
 }
-
 
 .board {
     width: 600px;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
+    margin-right: 40px;
+    border: 5px solid #474747;
 }
 
 .pixel {
-    box-shadow: inset 0 0 0 0.2px rgba(0, 0, 0, 0.404);
+    box-shadow: inset 0 0 0 0.2px rgba(255, 255, 255, 0.5);
+    background-color: black;
+}
+
+.controls {
+    display: flex;
+    flex-direction: column;
+    width: 100px;
+    margin: 20px;
+    justify-content: center;
+}
+
+footer {
+    color: rgb(148, 148, 148);
+    text-align: center;
+    font-family: 'Silkscreen', sans-serif;
+    margin-top: 10px;
+    cursor: pointer;
+}
+
+a {
+    user-select: none;
+    color: inherit; 
+    text-decoration: none;
 }
 
