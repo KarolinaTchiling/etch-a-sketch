@@ -1,6 +1,3 @@
-
-
-
 const board = document.querySelector(".board");
 const container = document.querySelector(".container");
 
@@ -96,19 +93,8 @@ clearBtn.addEventListener('click', function () {
     
     for(let i = 0; i < pixel.length; i++) {
         pixel[i].style.backgroundColor = 'black';
-        pixel[i].style.opacity = "1"; 
     }
 })
-
-
-
-
-// const shaderBtn = document.getElementById("shader");
-// shaderBtn.addEventListener('click', function (){
-//     colorType = 'shader';
-// })
-
-
 
 
 let isMouseDown = false;
@@ -141,95 +127,38 @@ function draw(event) {
 
             if (colorType == 'white') {
                 clickedPixel.style.backgroundColor = "white"; 
-                clickedPixel.style.opacity = "1"; 
             }
             else if (colorType == 'purple') {
-                clickedPixel.style.backgroundColor = "rgb(126, 66, 238)";
-                clickedPixel.style.opacity = "1";  
+                clickedPixel.style.backgroundColor = "rgb(126, 66, 238)"; 
             }
             else if (colorType == 'blue') {
-                clickedPixel.style.backgroundColor = "rgb(71, 157, 255)";
-                clickedPixel.style.opacity = "1"; 
+                clickedPixel.style.backgroundColor = "rgb(71, 157, 255)"; 
             }
             else if (colorType == 'green') {
                 clickedPixel.style.backgroundColor = "rgb(46, 252, 73)";
-                clickedPixel.style.opacity = "1";
             }
             else if (colorType == 'yellow') {
                 clickedPixel.style.backgroundColor = "rgb(217, 255, 0)";
-                clickedPixel.style.opacity = "1";
             }
             else if (colorType == 'orange') {
                 clickedPixel.style.backgroundColor = "rgb(255, 123, 0)";
-                clickedPixel.style.opacity = "1";
             }
             else if (colorType == 'red') {
                 clickedPixel.style.backgroundColor = "rgb(255, 30, 30)";
-                clickedPixel.style.opacity = "1";
             }
             else if (colorType == 'pink') {
                 clickedPixel.style.backgroundColor = "rgb(241, 55, 179)";
-                clickedPixel.style.opacity = "1";
             } 
             else if (colorType == 'rainbow') {
-                clickedPixel.style.backgroundColor = getRandomColor();
-                clickedPixel.style.opacity = "1";  
+                clickedPixel.style.backgroundColor = getRandomColor(); 
             } 
             else if (colorType == 'black') {
                 clickedPixel.style.backgroundColor = "black";
-                clickedPixel.style.opacity = "1"; 
             }          
         }
     }
     prevPixel = clickedPixel;
-
 }
-
-
-// function draw(event) {
-//     const clickedPixel = event.target;
-
-//     if (clickedPixel.classList.contains('pixel')) {
-
-//         if (prevPixel !== clickedPixel) {
-
-//             if (colorType == 'black') {
-//                 clickedPixel.style.backgroundColor = "white"; 
-//                 clickedPixel.style.opacity = "1"; 
-//             }
-//             else if (colorType == 'rainbow') {
-//                 clickedPixel.style.backgroundColor = getRandomColor();
-//                 clickedPixel.style.opacity = "1";  
-//             }
-//             else if (colorType == 'eraser') {
-//                 clickedPixel.style.backgroundColor = "white";
-//                 clickedPixel.style.opacity = "1"; 
-//             }
-//             else if (colorType == 'shader') {
-//                 let currentColor = window.getComputedStyle(clickedPixel).backgroundColor;
-//                 let currentOpacity = window.getComputedStyle(clickedPixel).opacity;
-//                 console.log(currentColor);
-    
-//                 if (currentColor == "rgb(255, 255, 255)"){
-//                     clickedPixel.style.backgroundColor = "black"; 
-//                     clickedPixel.style.opacity = "0.1"; 
-//                 }
-//                 if (currentOpacity < 1) {
-//                     console.log(currentOpacity);
-        
-//                     newOp = parseFloat(currentOpacity) + 0.1;
-//                     console.log(newOp);
-//                     clickedPixel.style.opacity = newOp;
-//                 }
-//             }
-//         }
-//         prevPixel = clickedPixel;
-
-//     }
-
-// }
-
-
 
 createBoard(4);
 
