@@ -160,7 +160,7 @@ function draw(event) {
     prevPixel = clickedPixel;
 }
 
-createBoard(4);
+createBoard(16);
 
 
 document.addEventListener('DOMContentLoaded', function () {
